@@ -6,24 +6,24 @@ import { GlobalContext } from "../Context/GlobalContext";
 const Home = () => {
   const { functionHandle, state, navigation } = useContext(GlobalContext);
 
-  // let navigate = useNavigate();
+  //inisialisasi Context
   const { handleDetail, handleSearch, handleChangeSearch } = functionHandle;
   const { data, setData, currentId, setCurrentId, search, setSearch } = state;
   const { navigate } = navigation;
 
+  //Fetching Data
   useEffect(() => {
     axios
       .get("https://dev-example.sanbercloud.com/api/job-vacancy")
       .then((res) => {
         setData([...res.data.data]);
-        // console.log(res);
       })
       .catch((error) => {});
   }, []);
-  // console.log(data);
 
   return (
     <>
+      {/* Hero Section */}
       <div className="bg-gray-50">
         <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 flex items-center flex-col">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -32,6 +32,7 @@ const Home = () => {
               more easily
             </span>
           </h2>
+          {/* Search Form */}
           <form className="w-3/4 mt-10" onSubmit={handleSearch}>
             <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
               Search
@@ -61,7 +62,6 @@ const Home = () => {
                 id="default-search"
                 className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Find Jobs Opportunity"
-                // required
               />
               <button
                 type="submit"
@@ -73,6 +73,7 @@ const Home = () => {
           </form>
         </div>
       </div>
+      {/* Show Data */}
       <div className="container mx-auto flex-wrap flex gap-10 items-center justify-start max-w-7xl py-12 px-4">
         {data !== null &&
           data.map((res) => {

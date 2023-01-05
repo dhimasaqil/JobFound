@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 const Detailjob = () => {
+  //Inisialisasi
   let { idData } = useParams();
   const [data, setData] = useState(null);
   const [detail, setDetail] = useState({
@@ -18,6 +19,8 @@ const Detailjob = () => {
     min: 0,
     max: 0,
   });
+
+  //Fetching 1 Data
   useEffect(() => {
     if (idData !== null) {
       axios
@@ -37,14 +40,12 @@ const Detailjob = () => {
             min: data.salary_min,
             max: data.salary_max,
           });
-          // console.log(company);
         })
         .catch((error) => {
           console.log(error);
         });
     }
   }, []);
-  // console.log(data);
   return (
     <>
       <section className="text-gray-700 body-font overflow-hidden bg-white">

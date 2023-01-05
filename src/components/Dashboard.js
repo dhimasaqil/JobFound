@@ -12,8 +12,10 @@ const Dashboard = () => {
   let navigate = useNavigate();
   return (
     <>
+      {/* Sidebar Section */}
       <div className="h-screen overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
         <ul className="space-y-2">
+          {/* List Data Section */}
           <li>
             <Link
               to={"/Dashboard/list-job-vacancy"}
@@ -33,6 +35,7 @@ const Dashboard = () => {
               <span className="ml-3">List Data</span>
             </Link>
           </li>
+          {/* Create Data Section */}
           <li>
             <Link
               to={"/Dashboard/list-job-vacancy/form"}
@@ -52,6 +55,7 @@ const Dashboard = () => {
               <span className="flex-1 ml-3 whitespace-nowrap">Data Form</span>
             </Link>
           </li>
+          {/* Profile Section */}
           <li>
             <a
               href="#"
@@ -73,6 +77,7 @@ const Dashboard = () => {
               <span className="flex-1 ml-3 whitespace-nowrap">Profile</span>
             </a>
           </li>
+          {/* Change Password Section */}
           <li>
             <a
               href="#"
@@ -126,18 +131,6 @@ const Dashboard = () => {
             )}
           </li>
         </ul>
-
-        {/* <div className=" overflow-x-auto shadow-md sm:rounded-lg w-full">
-          {edit ? (
-            <Formdata />
-          ) : (
-            <Table
-              data={data}
-              truncateString={truncateString}
-              setEdit={handleEdit}
-            />
-          )}
-        </div> */}
       </div>
     </>
   );

@@ -6,6 +6,7 @@ import { GlobalContext } from "../Context/GlobalContext";
 import { Accordion, Label, TextInput, Button } from "flowbite-react";
 
 const Jobvacancy = () => {
+  //inisialisasi Context
   const { functionHandle, state, navigation } = useContext(GlobalContext);
   const {
     handleDetail,
@@ -28,6 +29,8 @@ const Jobvacancy = () => {
   } = state;
 
   const { navigate } = navigation;
+
+  //fetching Data
   useEffect(
     (res) => {
       let fetchData = async () => {
@@ -66,11 +69,6 @@ const Jobvacancy = () => {
         });
 
         setData([...result]);
-        // .then((res) => {
-        //   setData([...res.data.data]);
-        //   // console.log(res);
-        // })
-        // .catch((error) => {});
       };
       if (fetchStatus) {
         fetchData();
@@ -80,13 +78,15 @@ const Jobvacancy = () => {
     [fetchStatus, setFetchStatus]
   );
 
-  console.log(data);
+  //Simplify String
   const truncateString = (string = "", maxLength = 40) =>
     string?.length > maxLength ? `${string.substring(0, maxLength)}…` : string;
 
   return (
     <>
+      {/* Search Filter */}
       <div className="bg-gray-50">
+        {/* Search Form */}
         <div className="mx-auto max-w-7xl py-8 px-4 sm:px-6 flex items-center flex-col">
           <form className="w-3/4 " onSubmit={handleSearch}>
             <label
@@ -128,6 +128,7 @@ const Jobvacancy = () => {
                 Search
               </button>
             </div>
+            {/* Filter Form */}
           </form>
           <Accordion alwaysOpen={true} className="mx-auto w-3/4 mt-5">
             <Accordion.Panel>
@@ -186,6 +187,7 @@ const Jobvacancy = () => {
         </div>
       </div>
 
+      {/* Show Data */}
       <div className="container mx-auto flex-wrap flex gap-10 items-center justify-start max-w-7xl py-12 px-4">
         {data !== null &&
           data.map((res) => {
