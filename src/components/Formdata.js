@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Formdata = (props) => {
+  //inisialisasi
   const { data } = props;
-  // const [input, setInput] = useState(null);
   const [input, setInput] = useState({
     title: "",
     job_description: "",
@@ -19,6 +19,8 @@ const Formdata = (props) => {
   });
   const [currentId, setCurrentId] = useState(-1);
   const [fetchStatus, setFetchStatus] = useState(true);
+
+  //Form Handling
   const handleInput = (event) => {
     let name = event.target.name;
     let value = event.target.value;
@@ -46,6 +48,8 @@ const Formdata = (props) => {
       setInput({ ...input, company_name: value });
     }
   };
+
+  //Button Handling
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(input);
@@ -63,6 +67,7 @@ const Formdata = (props) => {
       salary_max,
     } = input;
 
+    //conditional Create Data or Update Data
     if (currentId === -1) {
       axios
         .post("https://dev-example.sanbercloud.com/api/job-vacancy", {
