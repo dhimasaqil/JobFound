@@ -5,17 +5,20 @@ import { useNavigate } from "react-router-dom";
 export const GlobalContext = createContext();
 
 export const GlobalProvider = (props) => {
+  //Inisialisasi
   const navigate = useNavigate();
   const [currentId, setCurrentId] = useState(-1);
   const [data, setData] = useState(null);
   const [fetchStatus, setFetchStatus] = useState(true);
 
+  //handle button Detail
   const handleDetail = (event) => {
     let idData = parseInt(event.target.value);
     setCurrentId(idData);
     navigate(`/Job-vacancy/${idData}`);
   };
 
+  //Search Component
   const [search, setSearch] = useState("");
   const handleChangeSearch = (event) => setSearch(event.target.value);
   const handleSearch = (event) => {
@@ -39,6 +42,8 @@ export const GlobalProvider = (props) => {
 
     fetchData();
   };
+
+  //filter Component
   const [filter, setFilter] = useState({
     job_type: "",
     company_city: "",
@@ -72,6 +77,8 @@ export const GlobalProvider = (props) => {
   const handleChangeFilter = (event) => {
     setFilter({ ...filter, [event.target.name]: event.target.value });
   };
+
+  //destructuring
   const functionHandle = {
     handleDetail,
     handleSearch,
