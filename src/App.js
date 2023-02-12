@@ -17,6 +17,7 @@ import Changepassword from "./components/Changepassword";
 import Formdata from "./pages/FormPages";
 import JobList from "./pages/JobList";
 import { GlobalProvider } from "./Context/GlobalContext";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -74,6 +75,14 @@ function App() {
                 <Dashboardlayout>
                   <Changepassword />
                 </Dashboardlayout>
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <Layout>
+                  <PageNotFound />
+                </Layout>
               }
             />
           </Routes>
